@@ -1,14 +1,16 @@
-import { createServer } from 'http';
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
 
-const LOCALHOST = '127.0.0.1';
-const PORT = 8080;
+dotenv.config();
 
-const server = createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Node Performer');
+const performer : Express = express();
+const port = process.env.Port || 8080;
+
+performer.get('/', (req : Request, res: Response) => {
+  res.send('Node Performer');
+  // TODO: list default endpoints here
 });
 
-server.listen(PORT, LOCALHOST, () => {
-  console.log(`Performer running at http://${LOCALHOST}:${PORT}/`);
+performer.listen(port, () => {
+  console.log(`Performer running at port ${port}`);
 });
