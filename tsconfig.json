@@ -1,15 +1,13 @@
 {
+  "include": ["src/**/*", "package.json"],
   "compilerOptions": {
     "module": "ESNext",
     "esModuleInterop": true,
-    "target": "es6",
     "moduleResolution": "node",
+    "target": "ES6",
     "sourceMap": true,
     "outDir": "dist"
   },
-  "lib": ["es2015"],
-  "include": [
-    "./src/**/*",
-  ]
+  "lib": ["es2015"]
 }
 
