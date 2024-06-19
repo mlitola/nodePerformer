@@ -10,7 +10,7 @@ export const benchmarkBubblesort = (dataSize: number): number => {
 
     const startTime = process.hrtime();
 
-    bubblesort(randomNumberArray, 100000);
+    bubblesort(randomNumberArray, dataSize);
 
     const diff = process.hrtime(startTime);
 

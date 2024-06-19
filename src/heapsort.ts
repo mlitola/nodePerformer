@@ -42,7 +42,7 @@ const createHeapFromArray = (dataArray: number[], dataSize: number, index: numbe
     }
 
     if  (right < dataSize && dataArray[right] > dataArray[largestValue]) {
-        largestValue = left;
+        largestValue = right;
     }
 
     if (largestValue != index) {
