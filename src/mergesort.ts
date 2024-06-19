@@ -50,7 +50,7 @@ const merge = (
 
     let i = 0;
     let j = 0;
-    var k = beginVal;
+    let k = beginVal;
 
     while (i < leftArrayLen && j < rightArrayLen) {
         if (leftArray[i] <= rightArray[j]) {
