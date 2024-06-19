@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from "express";
-import { QuickSort } from "./quicksort.js";
+import { benchmarkQuicksort } from "./quicksort.js";
+import { benchmarkMergesort } from "./mergesort.js"
 import path from "path";
 import dotenv from "dotenv";
 
@@ -15,7 +16,7 @@ performer.get('/', (req : Request, res: Response) => {
 });
 
 performer.get('/quicksort', (req : Request, res: Response) => {
-  const secs = QuickSort(dataSize);
+  const secs = benchmarkQuicksort(dataSize);
   const msg = getResultMessage("Quicksort", secs);
   
   console.log(msg);
@@ -27,7 +28,11 @@ performer.get('/bubblesort', (req : Request, res: Response) => {
 });
 
 performer.get('/mergesort', (req : Request, res: Response) => {
-  res.send("TBD...");
+  const secs = benchmarkMergesort(dataSize);
+  const msg = getResultMessage("Mergesort", secs);
+
+  console.log(msg);
+  res.send(msg);
 });
 
 performer.get('/heapsort', (req : Request, res: Response) => {
