@@ -16,7 +16,7 @@ Start the project from the project directory with the following:
 npm start
 ```
 
-When terminal says that the performer is running, you can access the basic html gui at http://127.0.0.1:8080/ (or with  the modified  port value if re-configred).
+When it says that the performer is running, you can access the html gui at http://127.0.0.1:8080/ (or with  the modified  port value).
 
 ### Misc
 
