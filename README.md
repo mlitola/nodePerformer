@@ -18,6 +18,13 @@ npm start
 
 When it says that the performer is running, you can access the html gui at http://127.0.0.1:8080/ (or with  the modified  port value).
 
+### Running unit tests
+
+Unit tests can be executed by running the following in the project root directory:
+```
+npm test
+```
+
 ### Misc
 
 This is currently a work very much in processs
