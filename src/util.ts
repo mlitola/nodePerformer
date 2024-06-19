@@ -1,4 +1,4 @@
-export const GenerateRandomNumbers = (dataSize: number, maxVal: number | undefined): number[] => {
+export const GenerateRandomNumbers = (dataSize: number, maxVal: number): number[] => {
     const randIntArr : number[] = [];
 
     for (let i = 0; i < dataSize; i++) {

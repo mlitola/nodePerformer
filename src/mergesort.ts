@@ -17,7 +17,7 @@ export const benchmarkMergesort = (dataSize: number): number => {
     // return seconds of the time it took to execute the algorithm
     return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
 }
-const  mergesort = (dataArray: number[], beginVal: number, endVal: number): number[] => {
+const  mergesort = (dataArray: number[], beginVal: number, endVal: number) => {
     if (beginVal >= endVal) {
         return dataArray;
     }
