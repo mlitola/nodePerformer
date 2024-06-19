@@ -10,7 +10,7 @@ export const benchmarkQuicksort = (dataSize: number): number => {
 
     const startTime = process.hrtime();
 
-    quicksort(randomNumberArray);
+    quicksort(randomNumberArray, 0, dataSize - 1);
 
     const diff = process.hrtime(startTime);
 
@@ -18,20 +18,31 @@ export const benchmarkQuicksort = (dataSize: number): number => {
     return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
 }
 
-const quicksort = (dataArray: number[]) => {
-    if (dataArray.length <= 1) return dataArray;
+const quicksort = (dataArray: number[], lowValue: number, highValue: number) => {
+    if (lowValue < highValue) {
+        const partitionIndex = partitionArray(dataArray, lowValue, highValue);
 
-    let pivot = dataArray[0];
-    let leftArr = [];
-    let rightArr = [];
-  
-    for (let i = 1; i < dataArray.length; i++) {
-      if (dataArray[i] < pivot) {
-        leftArr.push(dataArray[i]);
-      } else {
-        rightArr.push(dataArray[i]);
-      }
+        quicksort(dataArray, lowValue, partitionIndex - 1);
+        quicksort(dataArray, partitionIndex + 1, highValue);
     }
-  
-    return [...quicksort(leftArr), pivot, ...quicksort(rightArr)];
+}
+
+const partitionArray = (dataArray: number[], lowValue: number, highValue: number): number => {
+    const pivotValue = dataArray[highValue];
+
+    let i = lowValue - 1;
+
+    for (let j = lowValue; j <= highValue; j++) {
+        if  (dataArray[j] < pivotValue) {
+          i++;
+          const swapValue = dataArray[i];
+          dataArray[i] = dataArray[j];
+          dataArray[j] = swapValue;
+        }
+    }
+
+    dataArray[highValue] = dataArray[i + 1];
+    dataArray[i + 1] = pivotValue;
+
+    return i + 1;
 }
