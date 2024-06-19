@@ -11,7 +11,7 @@ describe("Util Tests", () => {
       it("should generate random numbers that are numbers", () => {
          const numbers = GenerateRandomNumbers(10, 10);
          for (const item of numbers) {
-            assert.isNotNaN(item);
+            assert.isNumber(item);
          } 
       });
 
