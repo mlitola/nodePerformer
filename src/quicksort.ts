@@ -15,7 +15,7 @@ export const benchmarkQuicksort = (dataSize: number): number => {
     const diff = process.hrtime(startTime);
 
     // return seconds of the time it took to execute quicksort
-    return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
+    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
 }
 
 export const quicksort = (dataArray: number[], lowValue: number, highValue: number) => {

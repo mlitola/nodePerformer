@@ -3,7 +3,8 @@ import { benchmarkBubblesort } from "./bubblesort.js";
 import { benchmarkHeapsort } from "./heapsort.js";
 import { benchmarkMergesort } from "./mergesort.js"
 import { benchmarkQuicksort } from "./quicksort.js";
-import { Million, HundredThousand } from "./constants.js";
+import { benchmarkSearch } from "./search.js";
+import { HundredMillion, Million, HundredThousand } from "./constants.js";
 import path from "path";
 import dotenv from "dotenv";
 
@@ -16,6 +17,9 @@ performer.get('/', (req : Request, res: Response) => {
   res.sendFile(path.resolve(process.env.HTMLPATH));
 });
 
+//
+// Sorting algorithms
+//
 performer.get('/bubblesort', (req : Request, res: Response) => {
   // Using smaller data size for bubble sort, as it is the slowest 
   const secs = benchmarkBubblesort(HundredThousand);
@@ -35,6 +39,26 @@ performer.get('/mergesort', (req : Request, res: Response) => {
 performer.get('/quicksort', (req : Request, res: Response) => {
   const secs = benchmarkQuicksort(Million);
   sendResponse(res, secs, "Quicksort", Million);
+});
+
+//
+// Search algorithms
+//
+performer.get('/linearsearch', (req : Request, res: Response) => {
+  const secs = benchmarkSearch("linearsearch", HundredMillion);
+  sendResponse(res, secs, "Linear Search", HundredMillion);
+});
+
+performer.get('/binarysearch', (req : Request, res: Response) => {
+  res.send("TBD.");
+});
+
+performer.get('/jumpsearch', (req : Request, res: Response) => {
+  res.send("TBD.");
+});
+
+performer.get('/ternarysearch', (req : Request, res: Response) => {
+  res.send("TBD.");
 });
 
 const sendResponse = (

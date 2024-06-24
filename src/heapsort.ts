@@ -15,7 +15,7 @@ export const benchmarkHeapsort = (dataSize: number): number => {
     const diff = process.hrtime(startTime);
 
     // return seconds of the time it took to execute the algorithm
-    return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
+    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
 }
 export const heapsort = (dataArray: number[], dataSize: number) => {
     for (let i = Math.floor(dataSize / 2) - 1; i >= 0; i--) {
