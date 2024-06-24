@@ -17,13 +17,13 @@ export const benchmarkHeapsort = (dataSize: number): number => {
     // return seconds of the time it took to execute the algorithm
     return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
 }
-const heapsort = (dataArray: number[], dataSize: number) => {
+export const heapsort = (dataArray: number[], dataSize: number) => {
     for (let i = Math.floor(dataSize / 2) - 1; i >= 0; i--) {
         createHeapFromArray(dataArray, dataSize, i);
     }
   
     for (let i = dataSize - 1; i > 0; i--) {
-        const swapValue = dataSize[0];
+        const swapValue = dataArray[0];
         dataArray[0] = dataArray[i];
         dataArray[i] = swapValue;
 

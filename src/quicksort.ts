@@ -18,7 +18,7 @@ export const benchmarkQuicksort = (dataSize: number): number => {
     return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
 }
 
-const quicksort = (dataArray: number[], lowValue: number, highValue: number) => {
+export const quicksort = (dataArray: number[], lowValue: number, highValue: number) => {
     if (lowValue < highValue) {
         const partitionIndex = partitionArray(dataArray, lowValue, highValue);
 

@@ -17,7 +17,7 @@ export const benchmarkBubblesort = (dataSize: number): number => {
     // return seconds of the time it took to execute the algorithm
     return (diff[0] * 1000000 + diff[1] / 1000) / SecondInMicroseconds;
 }
-const  bubblesort = (dataArray: number[], dataSize: number) => {
+export const  bubblesort = (dataArray: number[], dataSize: number) => {
     let valueSwapped: boolean;
 
     for (let i = 0; i < dataSize; i++) {
