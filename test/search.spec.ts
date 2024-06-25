@@ -1,14 +1,21 @@
 import { assert } from "chai";
-import { benchmarkSearch, buildBinaryTree, doLinearSearch } from "../src/search.js";
+import { benchmarkSearch, buildBinarySearchTree, linearSearch, jumpSearch } from "../src/search.js";
+import { GenerateAscendingNumbers } from "../src/util.js";
 
+const testData = [5, 8, 11, 3, 77];
 describe("Search - benchmark search tests", () => {
     it("should return number of seconds the execution took time for linear search", () => {
-        const secs = benchmarkSearch("linearsearch", 10);
+        const secs = benchmarkSearch("linearsearch", 100);
         assert.isNumber(secs);
     });
 
-    it("should return number of seconds the execution took time for binary tree search", () => {
-        const secs = benchmarkSearch("binarysearch", 10);
+    it("should return number of seconds the execution took time for binary search tree", () => {
+        const secs = benchmarkSearch("binarysearch", 100);
+        assert.isNumber(secs);
+    });
+
+    it("should return number of seconds the execution took time for jump search", () => {
+        const secs = benchmarkSearch("jumpsearch", 100);
         assert.isNumber(secs);
     });
 
@@ -20,30 +27,39 @@ describe("Search - benchmark search tests", () => {
 
 describe("Search - linear search tests", () => {
     it("should return true after value is found", () => {
-        const testData = [5, 8, 11, 3, -1];
-        const result = doLinearSearch(testData);
+        const result = linearSearch(testData, 77);
         assert.isTrue(result);
     });
 
     it("should return false if no value is found", () => {
-        const testData = [5, 8, 11, 3];
-        const result = doLinearSearch(testData);
+        const result = linearSearch(testData, 78);
         assert.isFalse(result);
     });
 });
 
 describe("Search - binary search tree tests", () => {
-    it("should return buildBinaryTree for data array", () => {
-        const testData = [5, 8, 11, 3, -1];
-        const bst = buildBinaryTree(testData);
+    it("should return buildBinarySearchTree for data array", () => {
+        const bst = buildBinarySearchTree(testData);
         assert.isDefined(bst);
     });
 
     it("should find designated node from binary tree", () => {
-        const testData = [5, 8, 11, 3, -1];
-        const bst = buildBinaryTree(testData);
-        const node = bst.search(bst.root, -1);
+        const bst = buildBinarySearchTree(testData);
+        const node = bst.search(bst.root, 77);
         assert.isDefined(node);
-        assert.equal(node.value, -1);
+        assert.equal(node.value, 77);
+    });
+});
+
+describe("Search - jump search tests", () => {
+    it("should return true after value is found", () => {
+        const numberArray = GenerateAscendingNumbers(300);
+        const result = jumpSearch(numberArray, 77, 0);
+        assert.isTrue(result);
+    });
+
+    it("should return false if no value is found", () => {
+        const result = jumpSearch(testData, 78, 0);
+        assert.isFalse(result);
     });
 });

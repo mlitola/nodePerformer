@@ -55,7 +55,8 @@ performer.get('/binarysearch', (req : Request, res: Response) => {
 });
 
 performer.get('/jumpsearch', (req : Request, res: Response) => {
-  res.send("TBD.");
+  const secs = benchmarkSearch("jumpsearch", Million);
+  sendResponse(res, secs, "Jump Search", Million);
 });
 
 performer.get('/ternarysearch', (req : Request, res: Response) => {
