@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { benchmarkHeapsort, heapsort } from "../src/heapsort.js"
+import { benchmarkHeapsort, heapsort } from "../src/sort/heapsort.js"
 
 describe("Heapsort - benchmarkHeapsort tests", () => {
     it("should return number of seconds the execution took time", () => {

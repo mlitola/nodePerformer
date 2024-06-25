@@ -1,5 +1,5 @@
-import { MaxNumberValue, SecondInMicroseconds } from "./constants.js";
-import {  GenerateRandomNumbers } from "./util.js"
+import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
+import {  GenerateRandomNumbers } from "../util.js"
 
 export const benchmarkHeapsort = (dataSize: number): number => {
     if (dataSize <= 1) {

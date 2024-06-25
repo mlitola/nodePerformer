@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { benchmarkBubblesort, bubblesort } from "../src/bubblesort.js"
+import { benchmarkBubblesort, bubblesort } from "../src/sort/bubblesort.js"
 
 describe("Bubblesort - benchmarkBubblesort tests", () => {
     it("should return number of seconds the execution took time", () => {

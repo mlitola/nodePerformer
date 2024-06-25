@@ -1,8 +1,8 @@
-import { MaxNumberValue, SecondInMicroseconds } from "./constants.js";
-import {  GenerateRandomNumbers } from "./util.js"
+import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
+import {  GenerateRandomNumbers } from "../util.js"
 import { BinarySearchTree } from "./binarySearchTree.js";
-import { HundredThousand } from "./constants.js";
-import { quicksort } from "./quicksort.js";
+import { HundredThousand } from "../constants.js";
+import { quicksort } from "../sort/quicksort.js";
 
 type SearchAlgorithm = "linearsearch" | "binarysearch" | "jumpsearch" | "ternarysearch";
 

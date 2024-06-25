@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { benchmarkQuicksort, quicksort } from "../src/quicksort.js";
+import { benchmarkQuicksort, quicksort } from "../src/sort/quicksort.js";
 
 describe("Quicksort - benchmarkQuicksort tests", () => {
     it("should return number of seconds the execution took time", () => {

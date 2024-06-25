@@ -1,9 +1,9 @@
 import express, { Express, Request, Response } from "express";
-import { benchmarkBubblesort } from "./bubblesort.js";
-import { benchmarkHeapsort } from "./heapsort.js";
-import { benchmarkMergesort } from "./mergesort.js"
-import { benchmarkQuicksort } from "./quicksort.js";
-import { benchmarkSearch } from "./search.js";
+import { benchmarkBubblesort } from "./sort/bubblesort.js";
+import { benchmarkHeapsort } from "./sort/heapsort.js";
+import { benchmarkMergesort } from "./sort/mergesort.js"
+import { benchmarkQuicksort } from "./sort/quicksort.js";
+import { benchmarkSearch } from "./search/search.js";
 import { HundredMillion, Million, HundredThousand } from "./constants.js";
 import path from "path";
 import dotenv from "dotenv";

@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { benchmarkMergesort, mergesort } from "../src/mergesort.js"
+import { benchmarkMergesort, mergesort } from "../src/sort/mergesort.js"
 
 describe("Mergesort -benchmarkMergesort tests", () => {
     it("should return number of seconds the execution took time", () => {

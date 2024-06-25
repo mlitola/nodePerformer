@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { benchmarkSearch, buildBinarySearchTree, linearSearch, jumpSearch } from "../src/search.js";
+import { benchmarkSearch, buildBinarySearchTree, linearSearch, jumpSearch } from "../src/search/search.js";
 import { GenerateAscendingNumbers } from "../src/util.js";
 
 const testData = [5, 8, 11, 3, 77];
