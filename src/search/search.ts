@@ -1,13 +1,10 @@
 import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
 import {  GenerateRandomNumbers } from "../util.js"
 import { BinarySearchTree } from "./binarySearchTree.js";
-import { HundredThousand } from "../constants.js";
+import { HundredThousand, JumpSearchStep } from "../constants.js";
 import { quicksort } from "../sort/quicksort.js";
 
 type SearchAlgorithm = "linearsearch" | "binarysearch" | "jumpsearch" | "ternarysearch";
-
-const valueToBeFound = HundredThousand;
-const jumpStep = 100;
 
 export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): number => {
     if (dataSize <= 1) {
@@ -16,7 +13,9 @@ export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): n
     
     const randomNumberArray : number[] = GenerateRandomNumbers(dataSize, MaxNumberValue);
     
-    // Insert special value that acts as the value to be found
+    // Insert a 100 000 value that the search algorithm needs to find
+    const valueToBeFound = HundredThousand;
+
     randomNumberArray[dataSize - 1] = valueToBeFound;
 
     let startTime = process.hrtime();
@@ -58,7 +57,7 @@ export const linearSearch = (numberArray: number[], valueToBeFound: number): boo
 }
 
 export const jumpSearch = (numberArray: number[], valueToBeFound: number, index: number): boolean => {
-    if (index + jumpStep > numberArray.length) {
+    if (index + JumpSearchStep > numberArray.length) {
         const subArray = numberArray.slice(index, numberArray.length - 1);
         return linearSearch(subArray, valueToBeFound);
     }
@@ -66,8 +65,8 @@ export const jumpSearch = (numberArray: number[], valueToBeFound: number, index:
     if (numberArray[index] > valueToBeFound) {
         let subArray = [];
 
-        if (index > jumpStep) {
-            subArray = numberArray.slice(index - jumpStep, index);
+        if (index > JumpSearchStep) {
+            subArray = numberArray.slice(index - JumpSearchStep, index);
         } else {
             subArray = numberArray.slice(0, index);
         }
@@ -75,7 +74,7 @@ export const jumpSearch = (numberArray: number[], valueToBeFound: number, index:
         return linearSearch(subArray, valueToBeFound);
     }
 
-    return jumpSearch(numberArray, valueToBeFound, index + jumpStep);
+    return jumpSearch(numberArray, valueToBeFound, index + JumpSearchStep);
 }
 
 export const buildBinarySearchTree = (numberArray: number[]): BinarySearchTree => {
