@@ -1,26 +1,32 @@
 import { assert } from "chai";
-import { benchmarkSearch, buildBinarySearchTree, linearSearch, jumpSearch } from "../src/search/search.js";
+import {
+  benchmarkSearch,
+  buildBinarySearchTree,
+  linearSearch,
+  jumpSearch,
+  SearchAlgorithm
+} from "../src/search/search.js";
 import { GenerateAscendingNumbers } from "../src/util.js";
 
 const testData = [5, 8, 11, 3, 77];
 describe("Search - benchmark search tests", () => {
     it("should return number of seconds the execution took time for linear search", () => {
-        const secs = benchmarkSearch("linearsearch", 100);
+        const secs = benchmarkSearch(SearchAlgorithm.Linear, 100);
         assert.isNumber(secs);
     });
 
     it("should return number of seconds the execution took time for binary search tree", () => {
-        const secs = benchmarkSearch("binarysearch", 100);
+        const secs = benchmarkSearch(SearchAlgorithm.Binary, 100);
         assert.isNumber(secs);
     });
 
     it("should return number of seconds the execution took time for jump search", () => {
-        const secs = benchmarkSearch("jumpsearch", 100);
+        const secs = benchmarkSearch(SearchAlgorithm.Jump, 100);
         assert.isNumber(secs);
     });
 
     it("should return zero below one data sizes", () => {
-        const secs = benchmarkSearch("linearsearch", 0);
+        const secs = benchmarkSearch(SearchAlgorithm.Linear, 0);
         assert.equal(secs, 0);
     });
 });

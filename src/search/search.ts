@@ -4,7 +4,12 @@ import { BinarySearchTree } from "./binarySearchTree.js";
 import { HundredThousand, JumpSearchStep } from "../constants.js";
 import { quicksort } from "../sort/quicksort.js";
 
-type SearchAlgorithm = "linearsearch" | "binarysearch" | "jumpsearch" | "ternarysearch";
+export enum SearchAlgorithm {
+    Linear,
+    Binary,
+    Jump,
+    Ternary
+};
 
 export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): number => {
     if (dataSize <= 1) {
@@ -20,9 +25,9 @@ export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): n
 
     let startTime = process.hrtime();
 
-    if (algorithm === "linearsearch") {
+    if (algorithm === SearchAlgorithm.Linear) {
         linearSearch(randomNumberArray, 100000);
-    } else if (algorithm === "binarysearch") {
+    } else if (algorithm === SearchAlgorithm.Binary) {
         const bst = buildBinarySearchTree(randomNumberArray);
 
         const buildTime = process.hrtime(startTime);
@@ -32,7 +37,7 @@ export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): n
         startTime = process.hrtime();
 
         bst.search(bst.root, valueToBeFound);
-    } else if (algorithm === "jumpsearch") {
+    } else if (algorithm === SearchAlgorithm.Jump) {
         quicksort(randomNumberArray, 0, dataSize - 1);
 
         startTime = process.hrtime();

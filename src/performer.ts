@@ -3,7 +3,7 @@ import { benchmarkBubblesort } from "./sort/bubblesort.js";
 import { benchmarkHeapsort } from "./sort/heapsort.js";
 import { benchmarkMergesort } from "./sort/mergesort.js"
 import { benchmarkQuicksort } from "./sort/quicksort.js";
-import { benchmarkSearch } from "./search/search.js";
+import { benchmarkSearch, SearchAlgorithm } from "./search/search.js";
 import { HundredMillion, Million, HundredThousand } from "./constants.js";
 import path from "path";
 import dotenv from "dotenv";
@@ -45,17 +45,17 @@ performer.get('/quicksort', (req : Request, res: Response) => {
 // Search algorithms
 //
 performer.get('/linearsearch', (req : Request, res: Response) => {
-  const secs = benchmarkSearch("linearsearch", HundredMillion);
+  const secs = benchmarkSearch(SearchAlgorithm.Linear, HundredMillion);
   sendResponse(res, secs, "Linear Search", HundredMillion);
 });
 
 performer.get('/binarysearch', (req : Request, res: Response) => {
-  const secs = benchmarkSearch("binarysearch", Million);
+  const secs = benchmarkSearch(SearchAlgorithm.Binary, Million);
   sendResponse(res, secs, "Binary Search", Million);
 });
 
 performer.get('/jumpsearch', (req : Request, res: Response) => {
-  const secs = benchmarkSearch("jumpsearch", Million);
+  const secs = benchmarkSearch(SearchAlgorithm.Jump, Million);
   sendResponse(res, secs, "Jump Search", Million);
 });
 
