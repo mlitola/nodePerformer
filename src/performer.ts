@@ -46,17 +46,17 @@ performer.get('/quicksort', (req : Request, res: Response) => {
 //
 performer.get('/linearsearch', (req : Request, res: Response) => {
   const secs = benchmarkSearch(SearchAlgorithm.Linear, HundredMillion);
-  sendResponse(res, secs, "Linear Search", HundredMillion);
+  sendResponse(res, secs, SearchAlgorithm.Linear, HundredMillion);
 });
 
 performer.get('/binarysearch', (req : Request, res: Response) => {
   const secs = benchmarkSearch(SearchAlgorithm.Binary, Million);
-  sendResponse(res, secs, "Binary Search", Million);
+  sendResponse(res, secs, SearchAlgorithm.Binary, Million);
 });
 
 performer.get('/jumpsearch', (req : Request, res: Response) => {
   const secs = benchmarkSearch(SearchAlgorithm.Jump, Million);
-  sendResponse(res, secs, "Jump Search", Million);
+  sendResponse(res, secs, SearchAlgorithm.Jump, Million);
 });
 
 performer.get('/ternarysearch', (req : Request, res: Response) => {

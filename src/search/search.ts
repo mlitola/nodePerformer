@@ -5,10 +5,10 @@ import { HundredThousand, JumpSearchStep } from "../constants.js";
 import { quicksort } from "../sort/quicksort.js";
 
 export enum SearchAlgorithm {
-    Linear,
-    Binary,
-    Jump,
-    Ternary
+    Linear = "Linear Search",
+    Binary ="Binary Search",
+    Jump = "Jump Search",
+    Ternary = "Ternary Search"
 };
 
 export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): number => {
