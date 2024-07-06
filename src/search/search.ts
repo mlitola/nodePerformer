@@ -43,6 +43,12 @@ export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): n
         startTime = process.hrtime();
 
         jumpSearch(randomNumberArray, valueToBeFound, 0);
+    } else if (algorithm === SearchAlgorithm.Ternary) {
+        quicksort(randomNumberArray, 0, dataSize - 1);
+
+        startTime = process.hrtime();
+
+        ternarySearch(randomNumberArray, valueToBeFound);
     }
 
     const diff = process.hrtime(startTime);
@@ -59,6 +65,16 @@ export const linearSearch = (numberArray: number[], valueToBeFound: number): boo
     }
 
     return false;
+}
+
+export const buildBinarySearchTree = (numberArray: number[]): BinarySearchTree => {
+    const binarySearchTree = new BinarySearchTree(numberArray[0]);
+
+    for (let i = 1; i < numberArray.length; i++) {
+        binarySearchTree.insert(numberArray[i]);
+    }
+
+    return binarySearchTree;
 }
 
 export const jumpSearch = (numberArray: number[], valueToBeFound: number, index: number): boolean => {
@@ -82,12 +98,30 @@ export const jumpSearch = (numberArray: number[], valueToBeFound: number, index:
     return jumpSearch(numberArray, valueToBeFound, index + JumpSearchStep);
 }
 
-export const buildBinarySearchTree = (numberArray: number[]): BinarySearchTree => {
-    const binarySearchTree = new BinarySearchTree(numberArray[0]);
+export const ternarySearch = (numberArray: number[], valueToBeFound: number): number => {
+    const firstElem = 0;
+    const lastElem = numberArray.length - 1;
 
-    for (let i = 1; i < numberArray.length; i++) {
-        binarySearchTree.insert(numberArray[i]);
+    let mid1 = firstElem + Math.ceil((lastElem - firstElem) / 3);
+    let mid2 = lastElem - Math.ceil((lastElem - firstElem) / 3);
+
+    while (mid1 > 0 && mid2 < lastElem) {
+        if (valueToBeFound == numberArray[mid1]) {
+            return mid1;
+        } else if (valueToBeFound == numberArray[mid2]) {
+            return mid2;
+        }
+    
+        if (valueToBeFound < numberArray[mid1]) {
+            mid1--;
+        } else if (valueToBeFound > numberArray[mid2]) {
+            mid2++;
+        } else if (valueToBeFound > numberArray[mid1] &&
+            valueToBeFound < numberArray[mid2]) {
+            mid1++;
+            mid2--;
+        }
     }
 
-    return binarySearchTree;
+    return -1;
 }

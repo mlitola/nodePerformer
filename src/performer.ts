@@ -60,7 +60,8 @@ performer.get('/jumpsearch', (req : Request, res: Response) => {
 });
 
 performer.get('/ternarysearch', (req : Request, res: Response) => {
-  res.send("TBD.");
+  const secs = benchmarkSearch(SearchAlgorithm.Ternary, Million);
+  sendResponse(res, secs, SearchAlgorithm.Ternary, Million);
 });
 
 const sendResponse = (
