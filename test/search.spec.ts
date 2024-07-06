@@ -1,14 +1,16 @@
 import { assert } from "chai";
 import {
+  SearchAlgorithm,
   benchmarkSearch,
   buildBinarySearchTree,
   linearSearch,
   jumpSearch,
-  SearchAlgorithm
+  ternarySearch
 } from "../src/search/search.js";
 import { GenerateAscendingNumbers } from "../src/util.js";
 
 const testData = [5, 8, 11, 3, 77];
+
 describe("Search - benchmark search tests", () => {
     it("should return number of seconds the execution took time for linear search", () => {
         const secs = benchmarkSearch(SearchAlgorithm.Linear, 100);
@@ -67,5 +69,18 @@ describe("Search - jump search tests", () => {
     it("should return false if no value is found", () => {
         const result = jumpSearch(testData, 78, 0);
         assert.isFalse(result);
+    });
+});
+
+describe("Search - ternary search tests", () => {
+    it("should return correct index after value is found", () => {
+        const numberArray = GenerateAscendingNumbers(301);
+        const result = ternarySearch(numberArray, 77);
+        assert.equal(result, 76);
+    });
+
+    it("should return negative one if no value is found", () => {
+        const result = ternarySearch(testData, 78);
+        assert.equal(result, -1);
     });
 });
