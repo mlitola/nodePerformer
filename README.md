@@ -27,4 +27,4 @@ npm test
 
 ### Misc
 
-This is currently a work very much in processs
+This is currently a work very much in progress.
