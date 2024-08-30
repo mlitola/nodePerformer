@@ -1,6 +1,6 @@
 import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
 import {  GenerateRandomNumbers, GetElapsedSeconds } from "../util.js"
-import { BinarySearchTree } from "./binarySearchTree.js";
+import { BinarySearchTree } from "./binary-search-tree.js";
 import { HundredThousand, JumpSearchStep } from "../constants.js";
 import { quicksort } from "../sort/quicksort.js";
 
