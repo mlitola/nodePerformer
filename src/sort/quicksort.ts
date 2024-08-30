@@ -1,5 +1,5 @@
-import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
-import {  GenerateRandomNumbers } from "../util.js"
+import { MaxNumberValue } from "../constants.js";
+import {  GenerateRandomNumbers, GetElapsedSeconds } from "../util.js"
 
 export const benchmarkQuicksort = (dataSize: number): number => {
     if (dataSize <= 1) {
@@ -12,10 +12,9 @@ export const benchmarkQuicksort = (dataSize: number): number => {
 
     quicksort(randomNumberArray, 0, dataSize - 1);
 
-    const diff = process.hrtime(startTime);
+    const elapsedSeconds = GetElapsedSeconds(startTime);
 
-    // return seconds of the time it took to execute quicksort
-    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
+    return elapsedSeconds;
 }
 
 export const quicksort = (dataArray: number[], lowValue: number, highValue: number) => {

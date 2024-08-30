@@ -1,5 +1,5 @@
 import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
-import {  GenerateRandomNumbers } from "../util.js"
+import {  GenerateRandomNumbers, GetElapsedSeconds } from "../util.js"
 import { BinarySearchTree } from "./binarySearchTree.js";
 import { HundredThousand, JumpSearchStep } from "../constants.js";
 import { quicksort } from "../sort/quicksort.js";
@@ -51,10 +51,9 @@ export const benchmarkSearch = (algorithm: SearchAlgorithm, dataSize: number): n
         ternarySearch(randomNumberArray, valueToBeFound);
     }
 
-    const diff = process.hrtime(startTime);
+    const elapsedSeconds = GetElapsedSeconds(startTime);
 
-    // return seconds of the time it took to execute quicksort
-    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
+    return elapsedSeconds;
 }
 
 export const linearSearch = (numberArray: number[], valueToBeFound: number): boolean => {

@@ -1,5 +1,5 @@
-import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
-import {  GenerateRandomNumbers } from "../util.js"
+import { MaxNumberValue } from "../constants.js";
+import {  GenerateRandomNumbers, GetElapsedSeconds } from "../util.js"
 
 export const benchmarkHeapsort = (dataSize: number): number => {
     if (dataSize <= 1) {
@@ -12,10 +12,9 @@ export const benchmarkHeapsort = (dataSize: number): number => {
 
     heapsort(randomNumberArray, dataSize);
 
-    const diff = process.hrtime(startTime);
+    const elapsedSeconds = GetElapsedSeconds(startTime);
 
-    // return seconds of the time it took to execute the algorithm
-    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
+    return elapsedSeconds;
 }
 export const heapsort = (dataArray: number[], dataSize: number) => {
     for (let i = Math.floor(dataSize / 2) - 1; i >= 0; i--) {

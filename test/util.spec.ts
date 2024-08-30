@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import { GenerateRandomNumbers, GenerateAscendingNumbers } from "../src/util";
+import { GenerateRandomNumbers, GenerateAscendingNumbers, GetElapsedSeconds } from "../src/util";
 
 describe("GenerateRandomNumbers Tests", () => {
    it("should generate random number array of specific length", () => {
@@ -40,5 +40,13 @@ describe("GenerateAscendingNumbers Tests", () => {
    it("returns an empty array for smaller than one data size", () => {
       const numbers = GenerateAscendingNumbers(0);
       assert.equal(numbers.length, 0);
+   });
+});
+
+describe("GetElapsedSeconds Tests", () => {
+   it("should return non-zero value", () => {
+      const time = process.hrtime();
+      const seconds = GetElapsedSeconds(time);
+      assert.notEqual(seconds, 0);
    });
 });

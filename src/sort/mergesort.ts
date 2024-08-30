@@ -1,5 +1,5 @@
-import { MaxNumberValue, SecondInMicroseconds } from "../constants.js";
-import {  GenerateRandomNumbers } from "../util.js"
+import { MaxNumberValue } from "../constants.js";
+import {  GenerateRandomNumbers, GetElapsedSeconds } from "../util.js"
 
 export const benchmarkMergesort = (dataSize: number): number => {
     if (dataSize <= 1) {
@@ -12,11 +12,11 @@ export const benchmarkMergesort = (dataSize: number): number => {
 
     mergesort(randomNumberArray, 0, dataSize - 1);
 
-    const diff = process.hrtime(startTime);
+    const elapsedSeconds = GetElapsedSeconds(startTime);
 
-    // return seconds of the time it took to execute the algorithm
-    return (diff[0] * SecondInMicroseconds + diff[1] / 1000) / SecondInMicroseconds;
+    return elapsedSeconds;
 }
+
 export const mergesort = (dataArray: number[], beginVal: number, endVal: number) => {
     if (beginVal >= endVal) {
         return dataArray;
